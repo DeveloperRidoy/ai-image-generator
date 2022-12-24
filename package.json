@@ -1,0 +1,11 @@
+{
+  "name": "ai-image-generator",
+  "version": "1.0.0",
+  "description": "ai image generator using the openai image model",
+  "main": "index.html",
+  "scripts": {
+    "test": "node index.html"
+  },
+  "author": "ridoy",
+  "license": "ISC"
+}
