@@ -20,6 +20,9 @@ const generateImage = async (e) => {
   e.preventDefault();
   try {
 
+    // remove all previous images
+    displayBox.innerHTML = '';
+
     // set loading screen
     loadingScreen.classList.remove("hidden");
 
@@ -57,6 +60,7 @@ const generateImage = async (e) => {
     // create and add generated images to the displaybox
     data.data.images.forEach((img) => {
       const image = document.createElement('img'); 
+      image.style.borderRadius = '5px';
       image.src = img.url;
       displayBox.appendChild(image);
     });
