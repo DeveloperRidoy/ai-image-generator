@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
-const generateImg = require("./api/generate-img");
+const generateImg = require("./generate-img");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 

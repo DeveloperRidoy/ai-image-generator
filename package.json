@@ -4,8 +4,8 @@
   "description": "ai image generator using the openai image model",
   "main": "index.html",
   "scripts": {
-    "serve": "node app.js",
-    "nodemon": "nodemon app.js",
+    "serve": "node api/index.js",
+    "nodemon": "nodemon api/index.js",
     "tailwindcss": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch",
     "dev": "concurrently 'npm:nodemon' 'npm:tailwindcss'"
   },
