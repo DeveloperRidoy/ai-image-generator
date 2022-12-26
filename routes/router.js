@@ -13,9 +13,7 @@ router.use((req, res) => {
     .json({
       status: "fail",
       message: "resource not found",
-      paths: require.main.paths,
-      path: require.main.path,
-      fileName: require.main.filename,
+      public: require.main.path+'/public',
     });
 });
 
