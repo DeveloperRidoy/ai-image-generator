@@ -10,7 +10,11 @@ router.use("/api/", apiRouter);
 router.use((req, res) => {
   return res
     .status(404)
-    .json({ status: "fail", message: "resource not found" });
+    .json({
+      status: "fail",
+      message: "resource not found",
+      path: dirname(require.main.filename) + "/public",
+    });
 });
 
 module.exports = router;
