@@ -3,7 +3,7 @@ const apiRouter = require("./api/apiRouter");
 const router = express.Router();
 
 // route for generating images from text
-router.use("/", express.static('public'));
+router.use("/", express.static('./public'));
 router.use('/api/', apiRouter)
  
 // for 404 request
