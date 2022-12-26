@@ -1,21 +1,19 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
-const generateImg = require("./generate-img");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const router = require("./api/router");
 
 // environmental variables
 dotenv.config();
 
 // body parser
 app.use(bodyParser.json());
- 
-
 
 // routes
 app.use("/", express.static("public"));
-app.post("/api/generate-img", generateImg);
+app.use("/api", router);
 
 // for 404 request
 app.use((req, res) => {

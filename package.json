@@ -2,10 +2,10 @@
   "name": "ai-image-generator",
   "version": "1.0.0",
   "description": "ai image generator using the openai image model",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "serve": "node api/index.js",
-    "nodemon": "nodemon api/index.js",
+    "serve": "node index.js",
+    "nodemon": "nodemon index.js",
     "tailwindcss": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch",
     "dev": "concurrently 'npm:nodemon' 'npm:tailwindcss'"
   },
@@ -23,6 +23,6 @@
     "tailwindcss": "^3.2.4"
   }, 
   "engines": {
-    "node": "18.x"
+    "node": "14.x"
   }
 }
