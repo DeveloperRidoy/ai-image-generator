@@ -4,8 +4,10 @@ const router = express.Router();
 const path = require("path");
 const { default: _default } = require("concurrently");
 
-// route for generating images from text
+// for serving static assets
 router.use("/", express.static(path.resolve(__dirname + "./../public")));
+
+// for serving api requests
 router.use("/api/", apiRouter);
 
 
