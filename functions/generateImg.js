@@ -3,7 +3,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const generateImg = async (req, res) => {
   try {
     const { text, num_of_images, size } = req.body;
-    
+
     // check if all reuired fields are provided
     if (!text)
       return res
@@ -25,10 +25,10 @@ const generateImg = async (req, res) => {
       return res
         .status(400)
         .json({ status: "fail", message: "please provide api key" });
-      
+
     // create openai configuration with the api key
-    
-    let configuration, openai 
+
+    let configuration, openai;
 
     // create openai configuration
     try {
@@ -51,18 +51,22 @@ const generateImg = async (req, res) => {
     }
 
     // make request
-    let response 
+    let response;
+     const payload = {
+       prompt: text,
+       n: Number(num_of_images),
+       size: `${size}x${size}`,
+     };
     try {
-      response = await openai.createImage({
-        prompt: text,
-        n: Number(num_of_images),
-        size: `${size}x${size}`,
-      });
+     
+
+      response = await openai.createImage(payload);
     } catch (error) {
       return res.status(500).json({
-        status: 'fail', 
-        message: 'failed request to openai'
-      })
+        status: "fail",
+        message: "failed request to openai",
+        payload
+      });
     }
 
     // return response
@@ -79,7 +83,7 @@ const generateImg = async (req, res) => {
     return res.status(500).json({
       status: "fail",
       message: "server error",
-      detail: JSON.stringify(error, error.response)
+      detail: JSON.stringify(error, error.response),
     });
   }
 };
