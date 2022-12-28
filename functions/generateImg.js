@@ -64,7 +64,7 @@ const generateImg = async (req, res) => {
         status: "fail",
         message: "failed request to openai",
         payload,
-        response: error.response,
+        response: JSON.stringify(error.response),
       });
     }
 
