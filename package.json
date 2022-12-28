@@ -4,10 +4,7 @@
   "description": "ai image generator using the openai image model",
   "main": "index.js",
   "scripts": {
-    "serve": "node index.js",
-    "nodemon": "nodemon index.js",
-    "tailwindcss": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch",
-    "dev": "concurrently 'npm:nodemon' 'npm:tailwindcss'"
+    "tailwindcss": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch"
   },
   "author": "ridoy",
   "license": "ISC",
@@ -18,10 +15,8 @@
     "openai": "^3.1.0"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "nodemon": "^2.0.20",
     "tailwindcss": "^3.2.4"
-  }, 
+  },
   "engines": {
     "node": "14.x"
   }
