@@ -52,22 +52,19 @@ const generateImg = async (req, res) => {
 
     // make request
     let response;
-     const payload = {
-       prompt: text,
-       n: Number(num_of_images),
-       size: `${size}x${size}`,
-     };
+    const payload = {
+      prompt: text,
+      n: Number(num_of_images),
+      size: `${size}x${size}`,
+    };
     try {
-     
-
       response = await openai.createImage(payload);
     } catch (error) {
       return res.status(500).json({
         status: "fail",
         message: "failed request to openai",
-        payload, 
-        response: error.response, 
-        message: error.response.message
+        payload,
+        response: error.response,
       });
     }
 
