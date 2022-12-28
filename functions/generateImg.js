@@ -25,7 +25,7 @@ const generateImg = async (req, res) => {
       return res
         .status(400)
         .json({ status: "fail", message: "please provide api key" });
-      return res.json({status: 'success'})
+      return res.json({status: 'success', text, num_of_images, size, apiKey})
     // // create openai configuration with the api key
     // const configuration = new Configuration({ apiKey });
     // const openai = new OpenAIApi(configuration);
