@@ -1,9 +1,9 @@
 const generateImg = require("../functions/generateImg");
 
-const handler = (req, res) => {
+const handler = async (req, res) => {
   switch (req.method) {
     case 'POST':
-      generateImg(req, res);
+      await generateImg(req, res);
       break;
   
     default:
