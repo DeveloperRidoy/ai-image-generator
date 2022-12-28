@@ -27,28 +27,8 @@ const generateImg = async (req, res) => {
         .json({ status: "fail", message: "please provide api key" });
 
     // create openai configuration with the api key
-
-    let configuration, openai;
-
-    // create openai configuration
-    try {
-      configuration = new Configuration({ apiKey });
-    } catch (error) {
-      return res.status(500).json({
-        status: "fail",
-        message: "failed to create openai configuration",
-      });
-    }
-
-    // create openai class with the configuration
-    try {
-      openai = new OpenAIApi(configuration);
-    } catch (error) {
-      return res.status(500).json({
-        status: "fail",
-        message: "failed to create openai class with the configuration",
-      });
-    }
+    const configuration = new Configuration({ apiKey });
+    const openai = new OpenAIApi(configuration);
 
     // make request
     let response;
@@ -63,7 +43,7 @@ const generateImg = async (req, res) => {
       return res.status(500).json({
         status: "fail",
         message: "failed request to openai",
-        payload
+        payload,
       });
     }
 
