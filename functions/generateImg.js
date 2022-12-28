@@ -27,15 +27,43 @@ const generateImg = async (req, res) => {
         .json({ status: "fail", message: "please provide api key" });
       
     // create openai configuration with the api key
-    const configuration = new Configuration({ apiKey });
-    const openai = new OpenAIApi(configuration);
+    
+    let configuration, openai 
+
+    // create openai configuration
+    try {
+      configuration = new Configuration({ apiKey });
+    } catch (error) {
+      return res.status(500).json({
+        status: "fail",
+        message: "failed to create openai configuration",
+      });
+    }
+
+    // create openai class with the configuration
+    try {
+      openai = new OpenAIApi(configuration);
+    } catch (error) {
+      return res.status(500).json({
+        status: "fail",
+        message: "failed to create openai class with the configuration",
+      });
+    }
 
     // make request
-    const response = await openai.createImage({
-      prompt: text,
-      n: Number(num_of_images), 
-      size: `${size}x${size}`,
-    });
+    let response 
+    try {
+      response = await openai.createImage({
+        prompt: text,
+        n: Number(num_of_images),
+        size: `${size}x${size}`,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 'fail', 
+        message: 'failed request to openai'
+      })
+    }
 
     // return response
     return res.json({
