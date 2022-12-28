@@ -82,7 +82,7 @@ const generateImg = async (req, res) => {
     return res.status(500).json({
       status: "fail",
       message: "server error",
-      detail: JSON.stringify(error),
+      detail: JSON.stringify(error.message),
     });
   }
 };
