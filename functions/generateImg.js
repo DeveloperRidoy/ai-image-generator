@@ -25,33 +25,33 @@ const generateImg = async (req, res) => {
       return res
         .status(400)
         .json({ status: "fail", message: "please provide api key" });
-      return res.json({status: 'success', text, num_of_images, size, apiKey})
-    // // create openai configuration with the api key
-    // const configuration = new Configuration({ apiKey });
-    // const openai = new OpenAIApi(configuration);
+      
+    // create openai configuration with the api key
+    const configuration = new Configuration({ apiKey });
+    const openai = new OpenAIApi(configuration);
 
-    // // make request
-    // const response = await openai.createImage({
-    //   prompt: text,
-    //   n: Number(num_of_images), 
-    //   size: `${size}x${size}`,
-    // });
+    // make request
+    const response = await openai.createImage({
+      prompt: text,
+      n: Number(num_of_images), 
+      size: `${size}x${size}`,
+    });
 
-    // // return response
-    // return res.json({
-    //   status: "success",
-    //   message: "BeepBoop, successfully geneated image based on the info!",
-    //   data: {
-    //     num_of_images,
-    //     images: response.data.data,
-    //   },
-    // });
+    // return response
+    return res.json({
+      status: "success",
+      message: "BeepBoop, successfully geneated image based on the info!",
+      data: {
+        num_of_images,
+        images: response.data.data,
+      },
+    });
   } catch (error) {
     console.log("server error: ", error);
     return res.status(500).json({
       status: "fail",
       message: "server error",
-      detail: JSON.stringify(error)
+      detail: JSON.stringify(error, error.response)
     });
   }
 };
